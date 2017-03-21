@@ -5,7 +5,7 @@
 1. 使用了 sobel 及德勞內三角化來優化三角形。
 2. 使用 webGL 改寫。
 
-### origin
+### DEMO
 
 ![](./src/avatar.jpg)
 
