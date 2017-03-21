@@ -13,11 +13,13 @@ const ctx = canvas.getContext('2d');
 getImageData(document.querySelector('img'))
   .then(imageData => {
     const originData = imageData;
-    console.log(originData);
+    // console.log(originData);
     // const grayscaleData = grayscale(imageData);
     const sobelPoints = sobel(imageData.width, imageData.height)(imageData.data);
     const sobelData = new ImageData(sobelPoints, imageData.width, imageData.height);
     const randomPoints = randomPickPoints(imageData.width, imageData.height)(Array.from(sobelPoints));
 
-    makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
+    window.data = makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
 });
+
+import gl from './gl';
