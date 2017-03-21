@@ -7,10 +7,11 @@ const randomPickPoints = (width, height) => (fixedPoints) => {
   for (var x = 0; x < width; x++) {
     var i = x * width * 4 + 4;
     for(var y = 0; y < height; y++, i+=4) {
-      if (fixedPoints[i] > 240 && edgeLength < (width * height) * 4 ) {
+      if (fixedPoints[i] > 220 && edgeLength < (width * height) * 4 ) {
         egdePoints.push([x, y]);
       }
     }
+    randomPoints.push([Math.random() * height, Math.random() * width]);
     randomPoints.push([Math.random() * height, Math.random() * width]);
     randomPoints.push([Math.random() * height, Math.random() * width]);
   }

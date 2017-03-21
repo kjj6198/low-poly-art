@@ -5,7 +5,6 @@ export default function getImageData(image) {
     img.crossOrigin = 'Anonymous';
     const canvas = document.createElement('canvas');
 
-
     const ctx = canvas.getContext('2d');
       img.onload = function() {
         canvas.width = image.width;
