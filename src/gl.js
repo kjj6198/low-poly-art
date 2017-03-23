@@ -1,8 +1,6 @@
 import vert from '../shaders/low-poly.vert';
 import frag from '../shaders/low-poly.frag';
 
-console.log(vert, frag);
-
 var POINTS_COUNT = 1000;
 setTimeout(() => {
   function initGL() {
@@ -82,22 +80,24 @@ setTimeout(() => {
     
     gl.vertexAttribPointer(points, 2, gl.FLOAT, false, 0 , 0);
     gl.enableVertexAttribArray(points);
+
+    // gl.vertexAttrib3f(points, 0, 0, 0);
     
     
-    var colorBuffer = gl.createBuffer();
+    // var colorBuffer = gl.createBuffer();
     
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+    // gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
     
-    gl.vertexAttribPointer(aVertexColor, 4, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(aVertexColor);
+    // gl.vertexAttribPointer(aVertexColor, 4, gl.FLOAT, false, 0, 0);
+    // gl.enableVertexAttribArray(aVertexColor);
     
     return data.vertices;
   }
 
   function draw(gl, vertices) {
     
-    gl.drawArrays(gl.POINTS, 0, 5);
+    gl.drawArrays(gl.LINES, 0, data.vertices.length / 2);
     
   }
 

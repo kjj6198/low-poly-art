@@ -42,7 +42,7 @@ const makeLowPoly = (points, triangles) => (ctx, imageData) => {
 
   return {
     colors,
-    vertices: [].concat.apply([], vertices.map(vertex => [parseFloat(vertex[0]) / imageData.width,parseFloat(vertex[1]) / imageData.height])),
+    vertices: [].concat.apply([], vertices.map(vertex => [(parseFloat(vertex[0]) / imageData.width) * 2 - 1, (parseFloat(vertex[1]) / imageData.height) * 2 - 1])),
     imageData
   }
 

@@ -6,5 +6,6 @@ varying lowp vec4 vColor;
 
 void main(void) {
   gl_Position = position;
+  gl_PointSize = 3.0;
   vColor = aVertexColor;
 }
