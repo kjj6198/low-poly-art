@@ -1,6 +1,9 @@
 const makeLowPoly = (points, triangles) => (ctx, imageData) => {
   let colors = [];
   let vertices = [];
+
+  ctx.canvas.width = imageData.width;
+  ctx.canvas.height = imageData.height;
   for (var i = 0; i < triangles.length; i+=3) {
       const x1 = points[triangles[i]][0];
       const x2 = points[triangles[i +1]][0];
@@ -21,7 +24,8 @@ const makeLowPoly = (points, triangles) => (ctx, imageData) => {
 
       colors.push([r,g,b]);
 
-      ctx.lineWidth = 0;
+      
+      ctx.lineWidth = 1;
       ctx.save();
       ctx.imageSmoothingQuality = 'high';
 
@@ -31,14 +35,12 @@ const makeLowPoly = (points, triangles) => (ctx, imageData) => {
       ctx.lineTo(x2, y2);
       ctx.lineTo(x3, y3);
       ctx.closePath();
+
       ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-
-      
       ctx.fill();
-      
       ctx.restore();
-
   }
+  
 
   return {
     colors,

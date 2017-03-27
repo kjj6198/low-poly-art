@@ -97,7 +97,7 @@ setTimeout(() => {
 
   function draw(gl, vertices) {
     
-    gl.drawArrays(gl.LINES, 0, data.vertices.length / 2);
+    gl.drawArrays(gl.POINTS, 0, data.vertices.length / 2);
     
   }
 

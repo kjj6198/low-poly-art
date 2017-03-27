@@ -10,16 +10,46 @@ canvas.width = image.width;
 canvas.height = image.height;
 const ctx = canvas.getContext('2d');
 
+document.querySelector('input[type="file"]')
+  .addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.addEventListener('load', () => {
+      image.src = reader.result;
+      getImageData(document.querySelector('img'))
+        .then(startLoadingImage)
+        .then(imageData => {
+          const originData = imageData;
+          console.log(imageData);
+          const sobelPoints = sobel(imageData.width, imageData.height)(imageData.data);
+          const sobelData = new ImageData(sobelPoints, imageData.width, imageData.height);
+          const randomPoints = randomPickPoints(imageData.width, imageData.height)(Array.from(sobelPoints));
+
+          window.data = makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
+        })
+        .then(completeLoadingImage);
+    }, false);
+  })
+
+const startLoadingImage = (imageData) => {
+  return imageData;
+}
+
+const completeLoadingImage = () => {
+
+}
+
+// import gl from './gl';
 getImageData(document.querySelector('img'))
-  .then(imageData => {
-    const originData = imageData;
-    // console.log(originData);
-    // const grayscaleData = grayscale(imageData);
-    const sobelPoints = sobel(imageData.width, imageData.height)(imageData.data);
-    const sobelData = new ImageData(sobelPoints, imageData.width, imageData.height);
-    const randomPoints = randomPickPoints(imageData.width, imageData.height)(Array.from(sobelPoints));
+        .then(startLoadingImage)
+        .then(imageData => {
+          const originData = imageData;
+          console.log(imageData);
+          const sobelPoints = sobel(imageData.width, imageData.height)(imageData.data);
+          const sobelData = new ImageData(sobelPoints, imageData.width, imageData.height);
+          const randomPoints = randomPickPoints(imageData.width, imageData.height)(Array.from(sobelPoints));
 
-    window.data = makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
-});
-
-import gl from './gl';
+          window.data = makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
+        })
+        .then(completeLoadingImage);

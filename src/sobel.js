@@ -46,11 +46,11 @@ const sobel = (width, height) => (imageData) => {
         (kernelY[2][2] * pixelAt(x + 1, y + 1))
       )
       const magnitude = Math.sqrt(Math.pow(X, 2) + Math.pow(Y, 2)) >>> 0;
+
       /*                 R          G         B        A  */
       sobalData.push(magnitude, magnitude, magnitude, 255);
     }
   }
-
   return new Uint8ClampedArray(sobalData);
 }
 
