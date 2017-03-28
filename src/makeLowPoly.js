@@ -6,7 +6,7 @@ const makeLowPoly = (points, triangles) => (ctx, imageData) => {
   ctx.canvas.height = imageData.height;
   for (var i = 0; i < triangles.length; i+=3) {
       const x1 = points[triangles[i]][0];
-      const x2 = points[triangles[i +1]][0];
+      const x2 = points[triangles[i+1]][0];
       const x3 = points[triangles[i+2]][0];
       const y1 = points[triangles[i]][1];
       const y2 = points[triangles[i+1]][1];
@@ -31,7 +31,7 @@ const makeLowPoly = (points, triangles) => (ctx, imageData) => {
 
       ctx.translate(0, 0);
       ctx.beginPath();
-      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1, y1);
       ctx.lineTo(x2, y2);
       ctx.lineTo(x3, y3);
       ctx.closePath();

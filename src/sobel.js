@@ -1,4 +1,5 @@
 const sobel = (width, height) => (imageData) => {
+  console.log(width, height)
   const bindPixelAt = (imageData) => {
     return function(x, y, i) {
       i = i || 0;
