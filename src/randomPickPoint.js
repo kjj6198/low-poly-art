@@ -13,7 +13,7 @@ const randomPickPoints = (width, height) => (fixedPoints) => {
   }
 
   vertices.forEach(vertice => {
-    if (Math.random() > 0.5 && egdePoints.length < 4000) {
+    if (Math.random() > 0.5 && egdePoints.length < 2500) {
       const random = Math.floor(Math.random() * vertices.length);
       const random2 = Math.floor(Math.random() * vertices.length);
       const random3 = Math.floor(Math.random() * vertices.length);
