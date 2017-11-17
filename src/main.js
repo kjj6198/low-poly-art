@@ -21,15 +21,14 @@ document.querySelector('input[type="file"]')
         .then(startLoadingImage)
         .then(imageData => {
           const originData = imageData;
-          console.log(imageData);
+
           const sobelPoints = sobel(imageData.width, imageData.height)(imageData.data);
           const sobelData = new ImageData(sobelPoints, imageData.width, imageData.height);
           ctx.canvas.width = imageData.width;
           ctx.canvas.height = imageData.height;
 
-          // ctx.putImageData(sobelData, 0, 0);
           const randomPoints = randomPickPoints(imageData.width, imageData.height)(Array.from(sobelPoints));
-
+          console.log(Delaunay.triangulate(randomPoints));
           window.data = makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
         })
         .then(completeLoadingImage);

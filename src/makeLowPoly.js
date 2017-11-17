@@ -31,6 +31,9 @@ const makeLowPoly = (points, triangles) => (ctx, imageData) => {
 
       ctx.translate(0, 0);
       ctx.beginPath();
+      // ctx.arc(x1, y1, 3, 0, Math.PI * 2);
+      // ctx.arc(x2, y2, 3, 0, Math.PI * 2);
+      // ctx.arc(x2, y2, 3, 0, Math.PI * 2);
       ctx.lineTo(x1, y1);
       ctx.lineTo(x2, y2);
       ctx.lineTo(x3, y3);
