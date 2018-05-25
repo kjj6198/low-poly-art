@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cee0643f820c2ddb1c6f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6f566591ae854d29d7ef"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -969,19 +969,19 @@ var _randomPickPoint2 = _interopRequireDefault(_randomPickPoint);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var image = document.querySelector('img');
-var canvas = document.querySelector('#canvas');
+var image = document.querySelector("img");
+var canvas = document.querySelector("#canvas");
 canvas.width = image.width;
 canvas.height = image.height;
-var ctx = canvas.getContext('2d');
+var ctx = canvas.getContext("2d");
 
-document.querySelector('input[type="file"]').addEventListener('change', function (e) {
+document.querySelector('input[type="file"]').addEventListener("change", function (e) {
   var file = e.target.files[0];
   var reader = new FileReader();
   reader.readAsDataURL(file);
-  reader.addEventListener('load', function () {
+  reader.addEventListener("load", function () {
     image.src = reader.result;
-    (0, _getImageData2.default)(document.querySelector('img')).then(startLoadingImage).then(function (imageData) {
+    (0, _getImageData2.default)(document.querySelector("img")).then(startLoadingImage).then(function (imageData) {
       var originData = imageData;
 
       var sobelPoints = (0, _sobel2.default)(imageData.width, imageData.height)(imageData.data);
