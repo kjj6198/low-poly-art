@@ -28,7 +28,7 @@ document.querySelector('input[type="file"]')
           ctx.canvas.height = imageData.height;
 
           const randomPoints = randomPickPoints(imageData.width, imageData.height)(Array.from(sobelPoints));
-          console.log(Delaunay.triangulate(randomPoints));
+          
           window.data = makeLowPoly(randomPoints, Delaunay.triangulate(randomPoints))(ctx, originData);
         })
         .then(completeLoadingImage);
